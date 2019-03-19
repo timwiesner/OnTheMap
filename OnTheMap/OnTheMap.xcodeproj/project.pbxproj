@@ -23,6 +23,7 @@
 		6B7032C122419B28004AFC14 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7032C022419B28004AFC14 /* Session.swift */; };
 		6B7032C322419BC9004AFC14 /* DeleteSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7032C222419BC9004AFC14 /* DeleteSession.swift */; };
 		6B7032C522419CFA004AFC14 /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7032C422419CFA004AFC14 /* SessionResponse.swift */; };
+		6B7032C72241A0E5004AFC14 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7032C62241A0E5004AFC14 /* Endpoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		6B7032C022419B28004AFC14 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		6B7032C222419BC9004AFC14 /* DeleteSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSession.swift; sourceTree = "<group>"; };
 		6B7032C422419CFA004AFC14 /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
+		6B7032C62241A0E5004AFC14 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 		6B37CA2A2240158C00F606D1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6B7032C62241A0E5004AFC14 /* Endpoints.swift */,
 				6B37CA3222402EF100F606D1 /* Parse Client */,
 				6B37CA3322402EFA00F606D1 /* Parse Response */,
 				6B49085F2241800600A5D66D /* Udacity Client */,
@@ -250,6 +253,7 @@
 				6B7032BF22419ACD004AFC14 /* Account.swift in Sources */,
 				6B37CA1B2240148B00F606D1 /* LoginViewController.swift in Sources */,
 				6B7032C122419B28004AFC14 /* Session.swift in Sources */,
+				6B7032C72241A0E5004AFC14 /* Endpoints.swift in Sources */,
 				6B37CA192240148B00F606D1 /* AppDelegate.swift in Sources */,
 				6B4908612241802700A5D66D /* UdacityClient.swift in Sources */,
 				6B37CA312240295400F606D1 /* StudentLocation.swift in Sources */,
