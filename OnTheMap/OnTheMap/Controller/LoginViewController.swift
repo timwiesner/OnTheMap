@@ -20,7 +20,13 @@ class LoginViewController: UIViewController {
         emailTextField.text = ""
         passwordTextField.text = ""
     }
-
-
+    
+    class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+//        var request = URLRequest(url: Endpoints.)
+    }
+    
+    @IBAction func loginTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "completeLogin", sender: nil)
+    }
 }
 
