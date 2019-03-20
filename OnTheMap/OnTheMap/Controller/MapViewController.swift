@@ -6,4 +6,8 @@
 //  Copyright © 2019 Tim Wiesner. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class MapViewController: UIViewController {
+    
+}

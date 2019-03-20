@@ -113,10 +113,10 @@
             </objects>
             <point key="canvasLocation" x="1713" y="356"/>
         </scene>
-        <!--List View Scene-->
+        <!--Table View-->
         <scene sceneID="FxO-gL-5wU">
             <objects>
-                <viewController id="xai-fE-II8" userLabel="List View Scene" sceneMemberID="viewController">
+                <viewController id="xai-fE-II8" userLabel="Table View" customClass="ListViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fDj-ei-36y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,7 +172,7 @@
         <!--Add Location View Controller-->
         <scene sceneID="nsj-MV-plw">
             <objects>
-                <viewController id="0D9-GW-0X1" userLabel="Add Location View Controller" sceneMemberID="viewController">
+                <viewController id="0D9-GW-0X1" userLabel="Add Location View Controller" customClass="AddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vxh-K9-aJt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -216,7 +216,7 @@
         <!--Map View-->
         <scene sceneID="NWi-tX-kRF">
             <objects>
-                <viewController id="FVh-IS-5KK" userLabel="Map View" sceneMemberID="viewController">
+                <viewController id="FVh-IS-5KK" userLabel="Map View" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ke3-Eh-GvN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
