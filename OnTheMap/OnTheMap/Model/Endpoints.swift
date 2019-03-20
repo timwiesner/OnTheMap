@@ -18,11 +18,13 @@ enum Endpoints {
     
     case getStudentLocation
     case postStudentLocation
+    case createSessionId
     
     var stringValue: String {
         switch self {
         case .getStudentLocation: return Endpoints.parseBase + "/studentlocation?limit=100&order=-updatedAt"
         case .postStudentLocation: return Endpoints.parseBase + "/studentlocation"
+        case .createSessionId: return Endpoints.udacityBase + "/users/"
         }
     }
     
