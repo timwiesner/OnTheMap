@@ -9,6 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -21,12 +22,37 @@ class LoginViewController: UIViewController {
         passwordTextField.text = ""
     }
     
-    class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
-//        var request = URLRequest(url: Endpoints.)
+    @IBAction func loginTapped(_ sender: UIButton) {
+//        performSegue(withIdentifier: "completeLogin", sender: nil)
+        setLoggingIn(true)
+        UdacityClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:response:error:))
+        
     }
     
-    @IBAction func loginTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "completeLogin", sender: nil)
+    func setLoggingIn(_ loggingIn: Bool) {
+        if loggingIn {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+        emailTextField.isEnabled = !loggingIn
+        passwordTextField.isEnabled = !loggingIn
+        loginButton.isEnabled = !loggingIn
+    }
+    
+    func handleLoginResponse(success: Bool, response: SessionResponse?, error: Error?) {
+        setLoggingIn(false)
+        if success {
+            self.performSegue(withIdentifier: "completeLogin", sender: nil)
+        } else {
+            showLoginFailure(message: error?.localizedDescription ?? "")
+        }
+    }
+    
+    func showLoginFailure(message: String) {
+        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        show(alertVC, sender: nil)
     }
 }
 

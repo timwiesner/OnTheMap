@@ -14,17 +14,19 @@ enum Endpoints {
     static let apiKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
     
     static let parseBase = "https://parse.udacity.com/parse/classes"
-    static let udacityBase = "https://onthemap-api.udacity.com/v1/session"
+    static let udacityBase = "https://onthemap-api.udacity.com/v1"
     
     case getStudentLocation
     case postStudentLocation
+    case getUserData
     case createSessionId
     
     var stringValue: String {
         switch self {
         case .getStudentLocation: return Endpoints.parseBase + "/studentlocation?limit=100&order=-updatedAt"
         case .postStudentLocation: return Endpoints.parseBase + "/studentlocation"
-        case .createSessionId: return Endpoints.udacityBase + "/users/"
+        case .getUserData: return Endpoints.udacityBase + "/users/"
+        case .createSessionId: return Endpoints.udacityBase + "/session"
         }
     }
     

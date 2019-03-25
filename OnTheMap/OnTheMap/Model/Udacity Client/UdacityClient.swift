@@ -11,7 +11,21 @@ import Foundation
 class UdacityClient {
     static let udacityBase = "https://onthemap-api.udacity.com/v1/session"
     
-//    class func login(username: String, password: String)
+//    struct Auth {
+//        static var sessionId = ""
+//    }
+    
+    class func login(username: String, password: String, completion: @escaping (Bool, SessionResponse?, Error?) -> Void) {
+        let body = LoginRequest(udacity: Udacity(username: username, password: password))
+        
+        taskForPOSTRequest(url: Endpoints.createSessionId.url, responseType: SessionResponse.self, body: body) { (response, error) in
+            if response != nil {
+                completion(true, response!, nil)
+            } else {
+                completion(false, nil, error)
+            }
+        }
+    }
     
     
     class func taskForGETRequest<ResponseType: Decodable>(url: URL, response: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
@@ -44,7 +58,6 @@ class UdacityClient {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue(Endpoints.applicationId, forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue(Endpoints.apiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try! JSONEncoder().encode(body)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
