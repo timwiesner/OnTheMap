@@ -23,9 +23,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-//        performSegue(withIdentifier: "completeLogin", sender: nil)
-        setLoggingIn(true)
-        UdacityClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:response:error:))
+        performSegue(withIdentifier: "completeLogin", sender: nil)
+//        setLoggingIn(true)
+//        UdacityClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:response:error:))
         
     }
     
@@ -40,19 +40,25 @@ class LoginViewController: UIViewController {
         loginButton.isEnabled = !loggingIn
     }
     
-    func handleLoginResponse(success: Bool, response: SessionResponse?, error: Error?) {
-        setLoggingIn(false)
-        if success {
-            self.performSegue(withIdentifier: "completeLogin", sender: nil)
-        } else {
-            showLoginFailure(message: error?.localizedDescription ?? "")
-        }
-    }
     
     func showLoginFailure(message: String) {
         let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         show(alertVC, sender: nil)
+    }
+}
+
+extension LoginViewController {
+    private func handleLoginResponse(success: Bool, response: SessionResponse?, error: Error?) {
+        setLoggingIn(false)
+        if success {
+            if let response = response {
+                Common.shared.userId = response.account.key
+            }
+            self.performSegue(withIdentifier: "completeLogin", sender: nil)
+        } else {
+            showLoginFailure(message: error?.localizedDescription ?? "")
+        }
     }
 }
 

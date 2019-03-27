@@ -14,6 +14,7 @@ class ParseClient {
     class func getStudentLocation(completion: @escaping ([StudentLocation], Error?) -> Void) {
         taskForGETRequest(url: Endpoints.getStudentLocation.url, response: LocationResult.self) { (response, error) in
             if let response = response {
+//                print(response.results)
                 completion(response.results, nil)
             } else {
                 completion([], error)
