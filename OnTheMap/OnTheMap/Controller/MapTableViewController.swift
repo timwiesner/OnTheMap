@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SafariServices
 
-class MapTableViewController: UITableViewController {
+class MapTableViewController: UITableViewController, SFSafariViewControllerDelegate {
     
     var students = [StudentLocation]()
     
@@ -35,15 +36,21 @@ class MapTableViewController: UITableViewController {
         cell.textLabel?.text = student.firstName + " " + student.lastName
         cell.detailTextLabel?.text = student.mediaURL
         cell.imageView?.image = UIImage(named: "icon_pin")
-
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let studentDetailController = storyboard!.instantiateViewController(withIdentifier: "StudentDetailViewController") as! StudentDetailViewController
-//        studentDetailController.student = students[(indexPath as NSIndexPath).row]
-        navigationController!.pushViewController(studentDetailController, animated: true)
+        let student = students[indexPath.row]
+        let urlString = student.mediaURL
         
+        if let url = URL(string: urlString) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//            UIApplication.shared.canOpenURL(url)
+        } else {
+            let alertVC = UIAlertController(title: "Invalid URL", message: "Invalid URL", preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            show(alertVC, sender: nil)
+        }
     }
 }
 
