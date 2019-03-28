@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1wK-cr-zyf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -62,7 +62,6 @@
                                         <state key="normal" title="Login"/>
                                         <connections>
                                             <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VGg-ru-cAe"/>
-                                            <segue destination="1wK-cr-zyf" kind="presentation" identifier="completeLogin" id="zBM-Bf-x6U"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqk-Ww-dXH" userLabel="Sign Up">
@@ -94,6 +93,7 @@
                         <outlet property="emailTextField" destination="LpW-OJ-pyZ" id="iAo-cY-KWU"/>
                         <outlet property="loginButton" destination="Vrb-ge-M1S" id="cJK-Bm-z0l"/>
                         <outlet property="passwordTextField" destination="VBm-oV-DTm" id="DRT-TK-fe5"/>
+                        <segue destination="1wK-cr-zyf" kind="presentation" identifier="completeLogin" id="2ys-NR-vFQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

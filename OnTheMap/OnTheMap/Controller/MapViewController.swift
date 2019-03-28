@@ -12,19 +12,20 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     var students = [StudentLocation]()
+    var locations = [MKPointAnnotation]()
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         
-        var locations = [MKPointAnnotation]()
+//        var locations = [MKPointAnnotation]()
         
         _ = ParseClient.getStudentLocation() { students, error in
             Common.shared.studentLocation = students
         }
-        
-        
         
         for student in students {
             let location = MKPointAnnotation()
@@ -32,8 +33,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             location.subtitle = student.mediaURL
             location.coordinate = CLLocationCoordinate2DMake(student.latitude, student.longitude)
             locations.append(location)
+            print(location)
         }
-        print(locations)
         mapView.addAnnotations(locations)
         
     }
@@ -53,4 +54,27 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return annotationView
     }
 }
+
+//extension MapViewController {
+//    func populateLocations() {
+//        var locations = [MKPointAnnotation]()
+//        ParseClient.getStudentLocation() { students, error in
+//            Common.shared.studentLocation = students
+//        }
+//        for student in students {
+//            let location = MKPointAnnotation()
+//            location.title = student.firstName + " " + student.lastName
+//            location.subtitle = student.mediaURL
+//            location.coordinate = CLLocationCoordinate2DMake(student.latitude, student.longitude)
+//            locations.append(location)
+//            print("Location: \(location)")
+//        }
+//        mapView.addAnnotations(locations)
+////        print(locations)
+//    }
+//
+////    @objc func reloadData() {
+////        self.populateLocations()
+////    }
+//}
 

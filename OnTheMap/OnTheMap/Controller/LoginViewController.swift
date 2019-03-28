@@ -14,18 +14,23 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        emailTextField.text = "hcaulfony@gmail.com"
+        passwordTextField.text = "NoHankN0!"
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        emailTextField.text = ""
-        passwordTextField.text = ""
+        
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "completeLogin", sender: nil)
-//        setLoggingIn(true)
-//        UdacityClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:response:error:))
+        setLoggingIn(true)
+        UdacityClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:response:error:))
         
     }
     
@@ -46,10 +51,8 @@ class LoginViewController: UIViewController {
         alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         show(alertVC, sender: nil)
     }
-}
-
-extension LoginViewController {
-    private func handleLoginResponse(success: Bool, response: SessionResponse?, error: Error?) {
+    
+    func handleLoginResponse(success: Bool, response: SessionResponse?, error: Error?) {
         setLoggingIn(false)
         if success {
             if let response = response {
@@ -61,4 +64,8 @@ extension LoginViewController {
         }
     }
 }
+
+
+
+
 
