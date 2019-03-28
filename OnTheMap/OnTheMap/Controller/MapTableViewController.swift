@@ -10,44 +10,33 @@ import UIKit
 
 class MapTableViewController: UITableViewController {
     
-    @IBOutlet var mapTableView: UITableView!
+    var students = [StudentLocation]()
     
-//    var students = [StudentLocation]()
-
     //    MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        _ = ParseClient.getStudentLocation() { students, error in
-            Common.shared.studentLocation = students
-        }
+        students = Common.shared.studentLocation
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print(students.count)
-//        return students.count
-        return Common.shared.studentLocation.count
+        return students.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mapTableViewCell", for: indexPath)
-//        let student = students[(indexPath as NSIndexPath).row]
-//        let student = students[indexPath.row]
-//        cell.textLabel?.text = "\(student.firstName)"
-//        cell.textLabel?.text = "\(student.firstName + student.lastName) \(student.mediaURL)"
-//        cell.nameText?.text = "\(student.firstName + student.lastName)"
-//        cell.urlText?.text = "\(student.mediaURL)"
-//        cell.pinIcon!.image = UIImage(named: "icon_pin")
+        let student = students[indexPath.row]
+//        cell.textLabel?.text = "\(student.firstName + student.lastName)"
+        cell.textLabel?.text = student.firstName + " " + student.lastName
+        cell.detailTextLabel?.text = student.mediaURL
+        cell.imageView?.image = UIImage(named: "icon_pin")
+
         return cell
     }
     
@@ -58,7 +47,4 @@ class MapTableViewController: UITableViewController {
         
     }
 }
-
-
-
 

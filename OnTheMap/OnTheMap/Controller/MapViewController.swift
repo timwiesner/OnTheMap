@@ -10,4 +10,14 @@ import UIKit
 
 class MapViewController: UIViewController {
     
+//    var students = [StudentLocation]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        _ = ParseClient.getStudentLocation() { students, error in
+            Common.shared.studentLocation = students
+            print(students)
+        }
+    }
 }
