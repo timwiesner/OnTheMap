@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1wK-cr-zyf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -121,33 +121,40 @@
         <scene sceneID="FxO-gL-5wU">
             <objects>
                 <viewController id="xai-fE-II8" userLabel="Table View" customClass="MapTableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eTj-5S-ZHC">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gDs-E3-vGa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mapTableViewCell" rowHeight="70" id="gjc-ID-0fY">
-                                <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mapTableViewCell" textLabel="Ra1-xN-vkH" detailTextLabel="1fi-FW-bbo" style="IBUITableViewCellStyleSubtitle" id="avS-d0-vGu">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gjc-ID-0fY" id="Ys0-Tp-5bO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="avS-d0-vGu" id="jB3-s7-kpk">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pin" translatesAutoresizingMaskIntoConstraints="NO" id="CyZ-d5-i9i">
-                                            <rect key="frame" x="8" y="4" width="55" height="55"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="55" id="Vgd-Lj-CPh"/>
-                                                <constraint firstAttribute="height" constant="55" id="yrQ-jE-teG"/>
-                                            </constraints>
-                                        </imageView>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ra1-xN-vkH">
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1fi-FW-bbo">
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="CyZ-d5-i9i" firstAttribute="top" secondItem="Ys0-Tp-5bO" secondAttribute="top" constant="4" id="19h-9K-3Af"/>
-                                        <constraint firstItem="CyZ-d5-i9i" firstAttribute="leading" secondItem="Ys0-Tp-5bO" secondAttribute="leading" constant="8" id="WAu-D9-SUC"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xai-fE-II8" id="805-VO-AIb"/>
+                            <outlet property="delegate" destination="xai-fE-II8" id="q4T-MF-X6L"/>
+                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On the Map" id="EJ1-Xn-Oah">
                         <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="tu7-zn-hBd"/>
@@ -160,9 +167,6 @@
                             <barButtonItem title="Refresh" image="icon_refresh" id="DZm-2a-cV5"/>
                         </rightBarButtonItems>
                     </navigationItem>
-                    <connections>
-                        <outlet property="mapTableView" destination="eTj-5S-ZHC" id="BrH-9A-P8J"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4bE-Tv-wGK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -301,7 +305,6 @@
         <image name="icon_addpin" width="24" height="24"/>
         <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
-        <image name="icon_pin" width="24" height="24"/>
         <image name="icon_refresh" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
