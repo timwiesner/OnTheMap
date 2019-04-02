@@ -9,16 +9,16 @@
 import Foundation
 
 struct StudentLocation: Codable {
-    let objectId: String
+    let objectId: String?
     let uniqueKey: String?
-    let firstName: String
-    let lastName: String
-    let mapString: String
+    let firstName: String?
+    let lastName: String?
+    let mapString: String?
     let mediaURL: String
-    let latitude: Double
-    let longitude: Double
-    let createdAt: String
-    let updatedAt: String
+    let latitude: Double?
+    let longitude: Double?
+    let createdAt: String?
+    let updatedAt: String?
     
     enum CodingKeys: String, CodingKey {
         case objectId
@@ -31,5 +31,27 @@ struct StudentLocation: Codable {
         case longitude
         case createdAt
         case updatedAt
+    }
+    
+//    var validURL: String {
+//        if mediaURL != nil {
+//            return "\(mediaURL!)"
+//        }
+//        return ""
+//    }
+    
+    var studentName: String {
+        var name = ""
+        if firstName != nil {
+            name = "\(firstName!)"
+            if lastName != nil {
+                name = "\(firstName!) \(lastName!)"
+            } else {
+                name = "\(lastName!)"
+            }
+        } else {
+            name = "Invalid name"
+        }
+        return name
     }
 }
