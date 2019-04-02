@@ -55,7 +55,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vrb-ge-M1S" userLabel="Login">
                                         <rect key="frame" x="0.0" y="108.5" width="343" height="30"/>
@@ -186,7 +186,12 @@
                                 <items>
                                     <navigationItem title="Add Location" id="BzZ-uZ-l7h">
                                         <barButtonItem key="backBarButtonItem" title="CANCEL" id="eBW-5h-Lnu"/>
-                                        <barButtonItem key="leftBarButtonItem" title="CANCEL" id="L6Y-nv-NbD"/>
+                                        <barButtonItem key="leftBarButtonItem" title="CANCEL" id="L6Y-nv-NbD">
+                                            <connections>
+                                                <action selector="cancel:" destination="0D9-GW-0X1" id="Ac0-TY-MGV"/>
+                                                <segue destination="1wK-cr-zyf" kind="presentation" id="8LN-31-1cJ"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -194,6 +199,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="QFt-80-GXb"/>
                     </view>
+                    <connections>
+                        <outlet property="cancel" destination="L6Y-nv-NbD" id="Vbr-9m-D6a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMM-w6-MOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -256,14 +264,22 @@
                         <viewLayoutGuide key="safeArea" id="aCJ-S8-A3V"/>
                     </view>
                     <navigationItem key="navigationItem" title="On the Map" id="JOS-vs-JJW">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="bjM-xj-tnm"/>
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="bjM-xj-tnm">
+                            <connections>
+                                <action selector="logoutTapped:" destination="FVh-IS-5KK" id="AQa-eu-M6Q"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Add Pin" image="icon_addpin" id="dQR-xa-lpq">
                                 <connections>
                                     <segue destination="0D9-GW-0X1" kind="presentation" id="Sdu-Bg-RPM"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Refresh" image="icon_refresh" id="xiA-Xt-aJR"/>
+                            <barButtonItem title="Refresh" image="icon_refresh" id="xiA-Xt-aJR">
+                                <connections>
+                                    <action selector="refresh:" destination="FVh-IS-5KK" id="BIQ-Jy-fIh"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -302,6 +318,7 @@
         <image name="icon_refresh" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sdu-Bg-RPM"/>
+        <segue reference="8LN-31-1cJ"/>
+        <segue reference="P3E-SW-NzI"/>
     </inferredMetricsTieBreakers>
 </document>

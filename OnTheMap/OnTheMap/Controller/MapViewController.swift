@@ -13,9 +13,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var locations = [MKPointAnnotation]()
     var students = [StudentLocation]()
-
+    
+    // MARK: Outlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    //    MARK: Actions
+    @IBAction func refresh(_ sender: UIBarButtonItem) {
+        populateStudents()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,26 +30,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func populateStudents() {
-        ParseClient.getStudentLocation(completion: handlePopulateStudents(students: error:))
-    }
-    
-    func handlePopulateStudents(students: [StudentLocation]?, error: Error?) {
-        guard let students = students else {
-            print(error!)
-            return
+        ParseClient.getStudentLocation() { students, error in
+            Common.shared.studentLocation = students
+            self.addAnnotations(students: students)
         }
-        Common.shared.studentLocation = students
-        addAnnotations(students: students)
     }
     
     func addAnnotations(students: [StudentLocation]) {
         for student in students {
             let location = MKPointAnnotation()
-            location.title = student.firstName + " " + student.lastName
+            let latitude = CLLocationDegrees(student.latitude ?? 0)
+            let longitude = CLLocationDegrees(student.longitude ?? 0)
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            location.title = student.studentName
             location.subtitle = student.mediaURL
-            location.coordinate = CLLocationCoordinate2D(latitude: student.latitude, longitude: student.longitude)
+            location.coordinate = coordinate
             locations.append(location)
-            print(location)
         }
         self.mapView.addAnnotations(locations)
     }
@@ -72,15 +74,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
-    
-    
 }
 
-
-
-////    @objc func reloadData() {
-////        self.populateLocations()
-////    }
-//}
 

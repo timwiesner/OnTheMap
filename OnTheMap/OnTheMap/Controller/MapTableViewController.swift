@@ -33,7 +33,8 @@ class MapTableViewController: UITableViewController, SFSafariViewControllerDeleg
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mapTableViewCell", for: indexPath)
         let student = students[indexPath.row]
-        cell.textLabel?.text = student.firstName + " " + student.lastName
+//        cell.textLabel?.text = student.firstName + " " + student.lastName
+        cell.textLabel?.text = student.studentName
         cell.detailTextLabel?.text = student.mediaURL
         cell.imageView?.image = UIImage(named: "icon_pin")
         return cell
@@ -45,7 +46,6 @@ class MapTableViewController: UITableViewController, SFSafariViewControllerDeleg
         
         if let url = URL(string: urlString) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//            UIApplication.shared.canOpenURL(url)
         } else {
             let alertVC = UIAlertController(title: "Invalid URL", message: "Invalid URL", preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))

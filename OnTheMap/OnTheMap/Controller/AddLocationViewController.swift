@@ -10,4 +10,7 @@ import UIKit
 
 class AddLocationViewController: UIViewController {
     
+    @IBAction func cancel(_ sender: Any) {
+    }
+    
 }
