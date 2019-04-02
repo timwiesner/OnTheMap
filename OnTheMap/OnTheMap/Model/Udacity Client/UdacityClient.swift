@@ -11,9 +11,10 @@ import Foundation
 class UdacityClient {
     static let udacityBase = "https://onthemap-api.udacity.com/v1/session"
     
-//    struct Auth {
-//        static var sessionId = ""
-//    }
+    struct Auth {
+        static var sessionId = ""
+        static var requestToken = ""
+    }
     
     class func login(username: String, password: String, completion: @escaping (Bool, SessionResponse?, Error?) -> Void) {
         let body = LoginRequest(udacity: Udacity(username: username, password: password))
@@ -79,6 +80,32 @@ class UdacityClient {
                     completion(nil, error)
                 }
             }
+        }
+        task.resume()
+    }
+    
+    class func logout(completion: @escaping () -> Void) {
+        var request = URLRequest(url: Endpoints.logout.url)
+        request.httpMethod = "DELETE"
+        
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil { // Handle error…
+                return
+            }
+            let range = 5..<data!.count
+            let newData = data?.subdata(in: range) /* subset response data! */
+            print(String(data: newData!, encoding: .utf8)!)
+            Auth.sessionId = ""
+            Auth.requestToken = ""
+            completion()
         }
         task.resume()
     }
