@@ -11,33 +11,43 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    var students = [StudentLocation]()
     var locations = [MKPointAnnotation]()
-    
+    var students = [StudentLocation]()
+
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        populateStudents()
         mapView.delegate = self
-        
-//        var locations = [MKPointAnnotation]()
-        
-        _ = ParseClient.getStudentLocation() { students, error in
-            Common.shared.studentLocation = students
+    }
+    
+    func populateStudents() {
+        ParseClient.getStudentLocation(completion: handlePopulateStudents(students: error:))
+    }
+    
+    func handlePopulateStudents(students: [StudentLocation]?, error: Error?) {
+        guard let students = students else {
+            print(error!)
+            return
         }
-        
+        Common.shared.studentLocation = students
+        addAnnotations(students: students)
+    }
+    
+    func addAnnotations(students: [StudentLocation]) {
         for student in students {
             let location = MKPointAnnotation()
             location.title = student.firstName + " " + student.lastName
             location.subtitle = student.mediaURL
-            location.coordinate = CLLocationCoordinate2DMake(student.latitude, student.longitude)
+            location.coordinate = CLLocationCoordinate2D(latitude: student.latitude, longitude: student.longitude)
             locations.append(location)
             print(location)
         }
-        mapView.addAnnotations(locations)
-        
+        self.mapView.addAnnotations(locations)
     }
+    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is MKPointAnnotation else { return nil }
@@ -53,26 +63,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         return annotationView
     }
+    
+    @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
+        print("Logout")
+        UdacityClient.logout {
+        }
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    
+    
 }
 
-//extension MapViewController {
-//    func populateLocations() {
-//        var locations = [MKPointAnnotation]()
-//        ParseClient.getStudentLocation() { students, error in
-//            Common.shared.studentLocation = students
-//        }
-//        for student in students {
-//            let location = MKPointAnnotation()
-//            location.title = student.firstName + " " + student.lastName
-//            location.subtitle = student.mediaURL
-//            location.coordinate = CLLocationCoordinate2DMake(student.latitude, student.longitude)
-//            locations.append(location)
-//            print("Location: \(location)")
-//        }
-//        mapView.addAnnotations(locations)
-////        print(locations)
-//    }
-//
+
+
 ////    @objc func reloadData() {
 ////        self.populateLocations()
 ////    }

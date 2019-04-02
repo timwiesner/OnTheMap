@@ -16,11 +16,11 @@ class MapTableViewController: UITableViewController, SFSafariViewControllerDeleg
     //    MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        students = Common.shared.studentLocation
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        students = Common.shared.studentLocation
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
