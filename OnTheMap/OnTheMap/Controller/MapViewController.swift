@@ -19,6 +19,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //    MARK: Actions
+    @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
+        print("Logout")
+        UdacityClient.logout {
+        }
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func refresh(_ sender: UIBarButtonItem) {
         populateStudents()
     }
@@ -64,15 +73,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             annotationView!.annotation = annotation
         }
         return annotationView
-    }
-    
-    @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
-        print("Logout")
-        UdacityClient.logout {
-        }
-        DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: nil)
-        }
     }
 }
 

@@ -13,6 +13,25 @@ class MapTableViewController: UITableViewController, SFSafariViewControllerDeleg
     
     var students = [StudentLocation]()
     
+    //    MARK: Actions
+    @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
+        print("Logout")
+        UdacityClient.logout {
+        }
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func refresh(_ sender: UIBarButtonItem) {
+        ParseClient.getStudentLocation() { students, error in
+            Common.shared.studentLocation = students
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     //    MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,5 +71,6 @@ class MapTableViewController: UITableViewController, SFSafariViewControllerDeleg
             show(alertVC, sender: nil)
         }
     }
+
 }
 

@@ -157,14 +157,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On the Map" id="EJ1-Xn-Oah">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="tu7-zn-hBd"/>
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="tu7-zn-hBd">
+                            <connections>
+                                <action selector="logoutTapped:" destination="xai-fE-II8" id="oxH-OW-kKX"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Add Pin" image="icon_addpin" id="BKM-tU-Fkw">
                                 <connections>
                                     <segue destination="0D9-GW-0X1" kind="presentation" id="P3E-SW-NzI"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Refresh" image="icon_refresh" id="DZm-2a-cV5"/>
+                            <barButtonItem title="Refresh" image="icon_refresh" id="DZm-2a-cV5">
+                                <connections>
+                                    <action selector="refresh:" destination="xai-fE-II8" id="PeZ-la-ZiI"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </viewController>
@@ -319,6 +327,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8LN-31-1cJ"/>
-        <segue reference="P3E-SW-NzI"/>
+        <segue reference="Sdu-Bg-RPM"/>
     </inferredMetricsTieBreakers>
 </document>
